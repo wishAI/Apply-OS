@@ -1,25 +1,39 @@
 package wishai.applyos.entity.block;
 
 
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import wishai.applyos.ApplyOSMod;
 
-public abstract class OSMachineBlock extends OSBlock {
+public abstract class OSMachineBlock extends OSBlock implements ITileEntityProvider {
 
-
-    public OSMachineBlock(String name) {
-        super(MapColor.BLACK, name);
+    OSMachineBlock(String name) {
+        super(MapColor.CYAN, name);
     }
 
+    @Override
+    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+        if (worldIn.isRemote)
+            return false;
 
-    // all the stuff that deals with facing of a block, should be seperated from this
+        playerIn.openGui(ApplyOSMod.instance, createGui(), worldIn, pos.getX(), pos.getY(), pos.getZ());
+
+        return super.onBlockActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
+    }
+
+    protected abstract int createGui();
+
+    // !!! all the stuff that deals with facing of a block, should be seperated from this
 
     @Override
     public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
