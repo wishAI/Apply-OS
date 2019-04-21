@@ -1,5 +1,7 @@
 package wishai.applyos;
 
+import net.minecraftforge.fml.common.network.NetworkRegistry;
+import wishai.applyos.entity.ui.OSGuiHandler;
 import wishai.applyos.proxy.CommonProxy;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -29,6 +31,8 @@ public class ApplyOSMod {
     public void preInit(FMLPreInitializationEvent event) {
         logger = event.getModLog();
         proxy.preInit(event);
+
+        NetworkRegistry.INSTANCE.registerGuiHandler(this, new OSGuiHandler());
     }
 
     @Mod.EventHandler
