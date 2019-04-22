@@ -10,6 +10,8 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import wishai.applyos.entity.block.machine.FileBlock;
+import wishai.applyos.entity.block.machine.LauncherBlock;
 
 import java.io.File;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package wishai.applyos.entity.block;
+package wishai.applyos.entity.block.machine;
 
 
 import net.minecraft.block.ITileEntityProvider;
@@ -14,10 +14,11 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import wishai.applyos.ApplyOSMod;
+import wishai.applyos.entity.block.OSBlock;
 
 public abstract class OSMachineBlock extends OSBlock implements ITileEntityProvider {
 
-    OSMachineBlock(String name) {
+    public OSMachineBlock(String name) {
         super(MapColor.CYAN, name);
     }
 

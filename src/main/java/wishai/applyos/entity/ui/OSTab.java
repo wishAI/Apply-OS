@@ -2,9 +2,8 @@ package wishai.applyos.entity.ui;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
-import wishai.applyos.entity.block.LauncherBlock;
+import wishai.applyos.entity.block.machine.LauncherBlock;
 import wishai.applyos.entity.block.OSBlockFactory;
-import wishai.applyos.entity.block.OSItemFactory;
 
 public class OSTab extends CreativeTabs {
 

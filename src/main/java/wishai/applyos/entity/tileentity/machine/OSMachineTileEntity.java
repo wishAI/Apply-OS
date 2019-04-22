@@ -20,8 +20,6 @@ public abstract class OSMachineTileEntity extends OSTileEntity implements ICapab
         this.itemProvider = createItemProvider();
     }
 
-    protected abstract void createUI(EntityPlayer player);
-
     public ItemStackHandler createItemProvider() {
         return null;
     }

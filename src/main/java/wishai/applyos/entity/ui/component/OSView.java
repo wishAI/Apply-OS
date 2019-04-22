@@ -4,14 +4,16 @@ import wishai.applyos.entity.ui.OSGui;
 
 public abstract class OSView {
 
-    private int x;
-    private int y;
 
-    public OSView(int x, int y) {
-        this.x = x;
-        this.y = y;
+    public OSView() {
     }
 
-    public abstract void render(OSGui gui);
+    public void render(OSGui gui, int x, int y) {
+        gui.getCanvas().translate(x, y);
+        render(gui);
+        gui.getCanvas().translate(-x, -y);
+    }
+
+    protected abstract void render(OSGui gui);
 
 }

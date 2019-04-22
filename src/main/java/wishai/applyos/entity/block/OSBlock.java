@@ -17,7 +17,7 @@ public abstract class OSBlock extends Block {
     public static final PropertyDirection FACING_H = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
 
-    OSBlock(Material blockMaterialIn, MapColor blockMapColorIn, String name) {
+    public OSBlock(Material blockMaterialIn, MapColor blockMapColorIn, String name) {
         super(blockMaterialIn, blockMapColorIn);
         setUnlocalizedName(ApplyOSMod.MOD_NAME + "." + name);
         setUnlocalizedName(name);
@@ -25,8 +25,8 @@ public abstract class OSBlock extends Block {
         setCreativeTab(OSTab.getInstance());
     }
 
-    OSBlock(MapColor blockMapColorIn, String name) {
-        this(Material.ROCK, blockMapColorIn, name);
+    public OSBlock(MapColor blockMapColorIn, String name) {
+        this(Material.IRON, blockMapColorIn, name);
     }
 
 //    @SideOnly(Side.CLIENT)

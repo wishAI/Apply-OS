@@ -1,7 +1,9 @@
-package wishai.applyos.entity.block;
+package wishai.applyos.entity.block.machine;
 
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import wishai.applyos.entity.tileentity.machine.FileTileEntity;
+import wishai.applyos.entity.ui.OSGuiHandler;
 
 import javax.annotation.Nullable;
 
@@ -17,7 +19,11 @@ public class FileBlock extends OSMachineBlock {
     @Nullable
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta) {
-        return null;
+        return new FileTileEntity();
     }
 
+    @Override
+    protected int createGui() {
+        return OSGuiHandler.FILE_MANAGER;
+    }
 }
