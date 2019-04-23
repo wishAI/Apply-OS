@@ -16,6 +16,8 @@ public class LauncherGui extends OSGui {
 
     @Override
     protected void addTileEntityViews() {
+        super.addTileEntityViews();
+
         IItemHandler itemProvider = tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.NORTH);
 
         // add item provider views

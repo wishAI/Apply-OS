@@ -1,6 +1,10 @@
 package wishai.applyos.proxy;
 
 
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+import wishai.applyos.ApplyOSMod;
 import wishai.applyos.entity.block.*;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -12,6 +16,8 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import wishai.applyos.entity.block.machine.FileBlock;
 import wishai.applyos.entity.block.machine.LauncherBlock;
+import wishai.applyos.entity.tileentity.machine.FileTileEntity;
+import wishai.applyos.entity.tileentity.machine.LauncherTileEntity;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -42,6 +48,8 @@ public class CommonProxy {
         for (Block block: blocks) {
             evt.getRegistry().register(block);
         }
+
+        registerTileEntities();
     }
 
     @SubscribeEvent
@@ -53,6 +61,12 @@ public class CommonProxy {
         for (Item item: items) {
             evt.getRegistry().register(item);
         }
+    }
+
+    private static void registerTileEntities() {
+        // register tile entities
+        GameRegistry.registerTileEntity(LauncherTileEntity.class, new ResourceLocation(ApplyOSMod.MOD_ID + ":launchertileentity"));
+        GameRegistry.registerTileEntity(FileTileEntity.class, new ResourceLocation(ApplyOSMod.MOD_ID + ":filetileentity"));
     }
 
 }

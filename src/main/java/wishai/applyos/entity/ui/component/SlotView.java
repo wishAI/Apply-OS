@@ -35,10 +35,8 @@ public class SlotView extends OSView {
     public void render(OSGui gui) {
         OSGui.GuiCanvas canvas = gui.getCanvas();
 
-        if (canvas!= null) {
-            canvas.setTexture(SLOT_TEXTURE);
-            gui.getCanvas().drawTexturedModalRect(0, 0, 0, 0, 16, 16);
-        }
+        canvas.setTexture(SLOT_TEXTURE);
+        canvas.drawTexturedModalRect(0, 0, 0, 0, 16, 16);
     }
 
 }

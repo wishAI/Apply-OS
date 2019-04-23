@@ -16,6 +16,9 @@ public class ItemProviderHandler extends ItemStackHandler {
     public ItemProviderHandler(int size) {
         super(size);
         itemTypes = new ArrayList<>(size);
+
+        for (int i = 0; i < size; i ++)
+            itemTypes.add(ItemStack.EMPTY);
     }
 
     public ItemProviderHandler(int size, List<ItemStack> itemTypes) {
@@ -29,6 +32,7 @@ public class ItemProviderHandler extends ItemStackHandler {
 
     public void setItemType(int slot, ItemStack type) {
         itemTypes.set(slot, type);
+        onContentsChanged(slot);
     }
 
     public ItemStack getItemType(int slot) {
@@ -55,7 +59,7 @@ public class ItemProviderHandler extends ItemStackHandler {
         if (slot >= itemTypes.size())
             return false;
 
-        return itemTypes.get(slot) != null;
+        return itemTypes.get(slot) != ItemStack.EMPTY;
     }
 
 }

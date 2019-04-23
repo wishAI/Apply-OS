@@ -27,7 +27,7 @@ public class OSGuiHandler implements IGuiHandler {
     @Nullable
     @Override
     public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-        return getCommonGuiElement(ID, player, world, x, y, z);
+        return getCommonGuiElement(ID, player, world, x, y, z).getCanvas();
     }
 
     private OSGui getCommonGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {

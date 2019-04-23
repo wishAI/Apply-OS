@@ -2,7 +2,7 @@
 {
   "modid": "apply os",
   "name": "Apply OS",
-  "description": "Example placeholder mod.",
+  "description": "Apply OS mod.",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",

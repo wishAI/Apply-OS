@@ -1,7 +1,7 @@
 package wishai.applyos.entity.tileentity.machine;
 
-import net.minecraftforge.items.ItemStackHandler;
 import wishai.applyos.entity.tileentity.ItemProviderHandler;
+
 
 public class LauncherTileEntity extends OSMachineTileEntity {
 
@@ -9,7 +9,7 @@ public class LauncherTileEntity extends OSMachineTileEntity {
     }
 
     @Override
-    public ItemStackHandler createItemProvider() {
+    public ItemProviderHandler createItemProvider() {
         return new ItemProviderHandler(9);
     }
 

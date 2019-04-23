@@ -29,7 +29,7 @@ public abstract class OSMachineBlock extends OSBlock implements ITileEntityProvi
 
         playerIn.openGui(ApplyOSMod.instance, createGui(), worldIn, pos.getX(), pos.getY(), pos.getZ());
 
-        return super.onBlockActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
+        return true;
     }
 
     protected abstract int createGui();

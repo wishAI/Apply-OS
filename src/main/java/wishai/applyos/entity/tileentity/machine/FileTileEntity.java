@@ -8,7 +8,7 @@ import wishai.applyos.entity.tileentity.ItemProviderHandler;
 public class FileTileEntity extends OSMachineTileEntity {
 
     @Override
-    public ItemStackHandler createItemProvider() {
+    public ItemProviderHandler createItemProvider() {
         return new ItemProviderHandler(9);
     }
 
