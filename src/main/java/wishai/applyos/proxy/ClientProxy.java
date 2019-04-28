@@ -24,7 +24,7 @@ public class ClientProxy extends CommonProxy {
         super.preInit(e);
 
         for (Item item : items) {
-            if (item instanceof ItemBlock)
+//            if (item instanceof ItemBlock)
                 renderers.add(item);
         }
     }

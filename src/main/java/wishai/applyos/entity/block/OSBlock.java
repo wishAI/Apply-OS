@@ -19,8 +19,9 @@ public abstract class OSBlock extends Block {
 
     public OSBlock(Material blockMaterialIn, MapColor blockMapColorIn, String name) {
         super(blockMaterialIn, blockMapColorIn);
-        setUnlocalizedName(ApplyOSMod.MOD_NAME + "." + name);
-        setUnlocalizedName(name);
+        setUnlocalizedName(ApplyOSMod.MOD_ID + "." + name);
+        if (name.lastIndexOf(".") >= 0)
+            name = name.substring(name.lastIndexOf(".") + 1);
         setRegistryName(name);
         setCreativeTab(OSTab.getInstance());
     }

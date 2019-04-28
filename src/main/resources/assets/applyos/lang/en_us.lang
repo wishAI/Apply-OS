@@ -1,0 +1,6 @@
+# machines
+tile.applyos.machine_base.name=OS Base Block
+item.applyos.launcher_app.name=Launcher
+item.applyos.file_app.name=File Manager
+tile.applyos.machine.launcher.name=Launcher Device
+tile.applyos.machine.file.name=File Manager Device

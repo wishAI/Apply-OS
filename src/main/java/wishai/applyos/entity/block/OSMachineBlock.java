@@ -20,8 +20,7 @@ import wishai.applyos.ApplyOSMod;
 public abstract class OSMachineBlock extends OSBlock implements ITileEntityProvider {
 
     public OSMachineBlock(String name) {
-        super(Material.IRON, MapColor.CYAN, name);
-        setUnlocalizedName("machine." + name);
+        super(Material.IRON, MapColor.CYAN, "machine." + name);
     }
 
     @Override

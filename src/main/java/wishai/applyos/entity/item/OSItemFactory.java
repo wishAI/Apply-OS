@@ -66,8 +66,20 @@ public class OSItemFactory {
         return item;
     }
 
-    public static Item getMachineAppItem() {
-        return null;
+    public static Item getMachineAppItem(Class<? extends OSMachineTileEntity> tileEntityClass) {
+        String name = tileEntityClass.getName();
+        name = name.substring(name.lastIndexOf(".") + 1);
+        name = name.substring(0, name.indexOf("TileEntity"));
+        name = name.toLowerCase() + "_app";
+
+        String className = MachineAppItem.class.getName() + "." + name;
+        if (items.containsKey(className))
+            return items.get(className);
+
+        Item item = new MachineAppItem(name);
+
+        items.put(className, item);
+        return item;
     }
 
     private static String getRegistryName(Block block) {

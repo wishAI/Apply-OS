@@ -1,6 +1,6 @@
 {
   "parent": "applyos:block/os_machine",
   "textures": {
-    "overlay": "applyos:blocks/file"
+    "overlay": "applyos:common/file"
   }
 }

@@ -62,7 +62,7 @@ public class CommonProxy {
         items.add(OSItemFactory.getMachineItem(tileEntityClass));
 
         // register machine app
-//        items.add(OSItemFactory.getMachineApp(block));
+        items.add(OSItemFactory.getMachineAppItem(tileEntityClass));
     }
 
     private static void registerRegularBlock(Material material, MapColor mapColor, String name) {
