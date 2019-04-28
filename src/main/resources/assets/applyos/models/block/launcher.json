@@ -1,5 +1,5 @@
 {
-  "parent": "applyos:block/os-machine",
+  "parent": "applyos:block/os_machine",
   "textures": {
     "overlay": "applyos:blocks/launcher"
   }

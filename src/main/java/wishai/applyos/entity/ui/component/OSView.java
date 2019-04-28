@@ -1,11 +1,13 @@
 package wishai.applyos.entity.ui.component;
 
+import net.minecraft.util.ResourceLocation;
+import wishai.applyos.ApplyOSMod;
 import wishai.applyos.entity.ui.OSGui;
 
 public abstract class OSView {
 
-    public OSView() {
-    }
+    protected static final ResourceLocation COMPONENTS_TEXTURE = new ResourceLocation(ApplyOSMod.MOD_ID, "textures/guis/components.png");
+
 
     public void render(OSGui gui, int x, int y) {
         OSGui.GuiCanvas canvas = gui.getCanvas();

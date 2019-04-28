@@ -15,8 +15,8 @@ import org.apache.logging.log4j.Logger;
 public class ApplyOSMod {
 
     public static final String MOD_ID = "applyos";
-    public static final String MOD_NAME = "Food Industry";
-    public static final String MOD_VERSION= "0.0.1 alpha";
+    public static final String MOD_NAME = "ApplyOS";
+    public static final String MOD_VERSION= "0.0.2 alpha";
 
 
     @SidedProxy(clientSide = "wishai.applyos.proxy.ClientProxy", serverSide = "wishai.applyos.proxy.ServerProxy")

@@ -25,9 +25,9 @@ public abstract class OSBlock extends Block {
         setCreativeTab(OSTab.getInstance());
     }
 
-    public OSBlock(MapColor blockMapColorIn, String name) {
-        this(Material.IRON, blockMapColorIn, name);
-    }
+//    public OSBlock(MapColor blockMapColorIn, String name) {
+//        this(Material.IRON, blockMapColorIn, name);
+//    }
 
 //    @SideOnly(Side.CLIENT)
 //    public void initModel() {

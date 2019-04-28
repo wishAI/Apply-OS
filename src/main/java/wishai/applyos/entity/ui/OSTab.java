@@ -2,8 +2,8 @@ package wishai.applyos.entity.ui;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
-import wishai.applyos.entity.block.machine.LauncherBlock;
 import wishai.applyos.entity.block.OSBlockFactory;
+import wishai.applyos.entity.tileentity.machine.LauncherTileEntity;
 
 public class OSTab extends CreativeTabs {
 
@@ -15,7 +15,7 @@ public class OSTab extends CreativeTabs {
 
     @Override
     public ItemStack getTabIconItem() {
-        return new ItemStack(OSBlockFactory.getBlock(LauncherBlock.class));
+        return new ItemStack(OSBlockFactory.getMachineBlock(LauncherTileEntity.class));
     }
 
     @Override
@@ -28,4 +28,5 @@ public class OSTab extends CreativeTabs {
             OSTab = new OSTab("Apply OS");
         return OSTab;
     }
+
 }

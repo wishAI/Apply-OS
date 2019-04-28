@@ -6,10 +6,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.items.CapabilityItemHandler;
-import net.minecraftforge.items.IItemHandler;
 import wishai.applyos.ApplyOSMod;
 import wishai.applyos.entity.tileentity.OSTileEntity;
 import wishai.applyos.entity.ui.component.OSView;
@@ -30,12 +27,9 @@ public abstract class OSGui extends Container {
         this.playerInv = playerInv;
 
         // only initialize canvas on client
+        addTileEntityViews();
         if (tileEntity.getWorld().isRemote)
             this.canvas = new GuiCanvas(this);
-        else {
-            // render all the other views in the constructor for the server
-            addTileEntityViews();
-        }
     }
 
     protected void addTileEntityViews() {
@@ -80,12 +74,24 @@ public abstract class OSGui extends Container {
             this.mc.getTextureManager().bindTexture(texture);
         }
 
+        public void drawTexturedModalRect(int x, int y, int textureX, int textureY) {
+            super.drawTexturedModalRect(x, y, textureX, textureY, xSize, ySize);
+        }
+
+        @Override
+        protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
+            super.drawGuiContainerForegroundLayer(mouseX, mouseY);
+            translate(-guiLeft, -guiTop);
+            renderHoveredToolTip(mouseX, mouseY);
+            translate(guiLeft, guiTop);
+        }
+
         @Override
         protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
             setTexture(BG_TEXTURE);
             int x = (width - xSize) / 2;
             int y = (height - ySize) / 2;
-            drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
+            drawTexturedModalRect(x, y, 0, 0);
 
             // render all the views for the client
             translate(guiLeft, guiTop);

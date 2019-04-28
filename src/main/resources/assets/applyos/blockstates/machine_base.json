@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "normal": { "model": "applyos:machine_base" }
+  }
+}

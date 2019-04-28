@@ -1,8 +1,9 @@
-package wishai.applyos.entity.block.machine;
+package wishai.applyos.entity.block;
 
 
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.MapColor;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -14,18 +15,19 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import wishai.applyos.ApplyOSMod;
-import wishai.applyos.entity.block.OSBlock;
+
 
 public abstract class OSMachineBlock extends OSBlock implements ITileEntityProvider {
 
     public OSMachineBlock(String name) {
-        super(MapColor.CYAN, name);
+        super(Material.IRON, MapColor.CYAN, name);
+        setUnlocalizedName("machine." + name);
     }
 
     @Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         if (worldIn.isRemote)
-            return false;
+            return true;
 
         playerIn.openGui(ApplyOSMod.instance, createGui(), worldIn, pos.getX(), pos.getY(), pos.getZ());
 
