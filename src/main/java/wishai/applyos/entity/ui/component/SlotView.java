@@ -6,26 +6,30 @@ import wishai.applyos.entity.ui.OSGui;
 
 public class SlotView extends OSView {
 
-
     private IItemHandler inventory;
     private int index;
+    private boolean isRendered;
 
 
     public SlotView(IItemHandler inventory, int idx) {
         this.inventory = inventory;
         this.index = idx;
+        this.isRendered = false;
     }
 
     @Override
     public void render(OSGui gui, int x, int y) {
         super.render(gui, x, y);
 
-        gui.addSlotToContainer(new SlotItemHandler(inventory, index, x, y) {
-            @Override
-            public void onSlotChanged() {
-                gui.getTileEntity().markDirty();
-            }
-        });
+        if (!isRendered) {
+            gui.addSlotToContainer(new SlotItemHandler(inventory, index, x, y) {
+                @Override
+                public void onSlotChanged() {
+                    gui.getTileEntity().markDirty();
+                }
+            });
+            this.isRendered = true;
+        }
     }
 
     @Override
@@ -33,7 +37,7 @@ public class SlotView extends OSView {
         OSGui.GuiCanvas canvas = gui.getCanvas();
 
         canvas.setTexture(COMPONENTS_TEXTURE);
-        canvas.drawTexturedModalRect(0, 0, 0, 0);
+        canvas.drawTexturedModalRect(0, 0, 0, 0, SLOT_SIZE, SLOT_SIZE);
     }
 
 }

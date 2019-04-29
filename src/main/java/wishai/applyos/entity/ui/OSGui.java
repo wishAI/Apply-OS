@@ -1,7 +1,11 @@
 package wishai.applyos.entity.ui;
 
+import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.GuiLabel;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.RenderItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -12,10 +16,13 @@ import wishai.applyos.entity.tileentity.OSTileEntity;
 import wishai.applyos.entity.ui.component.OSView;
 import wishai.applyos.entity.ui.component.PlayerInventoryView;
 
+import java.util.List;
+
 
 public abstract class OSGui extends Container {
 
-    private static final ResourceLocation BG_TEXTURE = new ResourceLocation(ApplyOSMod.MOD_ID, "textures/guis/background.png");
+    private static final ResourceLocation BG_TEXTURE = new ResourceLocation(ApplyOSMod.MOD_ID, "textures/guis/os_background.png");
+    private static final ResourceLocation BG_TEXTURE_CLEAN = new ResourceLocation(ApplyOSMod.MOD_ID, "textures/guis/os_background_clean.png");
 
     protected OSTileEntity tileEntity;
     private GuiCanvas canvas;
@@ -34,7 +41,7 @@ public abstract class OSGui extends Container {
 
     protected void addTileEntityViews() {
         // add inventory of player
-        add(new PlayerInventoryView(playerInv), 0, 0);
+        add(new PlayerInventoryView(playerInv), 2, 128);
     }
 
     public void add(OSView view, int x, int y) {
@@ -74,8 +81,32 @@ public abstract class OSGui extends Container {
             this.mc.getTextureManager().bindTexture(texture);
         }
 
-        public void drawTexturedModalRect(int x, int y, int textureX, int textureY) {
+        public int getGuiLeft() {
+            return guiLeft;
+        }
+
+        public int getGuiTop() {
+            return guiTop;
+        }
+
+        public List<GuiButton> getButtonList() {
+            return buttonList;
+        }
+
+        public List<GuiLabel> getLabelList() {
+            return labelList;
+        }
+
+        public FontRenderer getFontRenderer() {
+            return fontRenderer;
+        }
+
+        public void drawTexturedModalRect(int x, int y, int textureX, int textureY, int xSize, int ySize) {
             super.drawTexturedModalRect(x, y, textureX, textureY, xSize, ySize);
+        }
+
+        public RenderItem getItemRender() {
+            return itemRender;
         }
 
         @Override
@@ -91,7 +122,7 @@ public abstract class OSGui extends Container {
             setTexture(BG_TEXTURE);
             int x = (width - xSize) / 2;
             int y = (height - ySize) / 2;
-            drawTexturedModalRect(x, y, 0, 0);
+            drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
 
             // render all the views for the client
             translate(guiLeft, guiTop);
@@ -99,4 +130,5 @@ public abstract class OSGui extends Container {
             translate(-guiLeft, -guiTop);
         }
     }
+
 }

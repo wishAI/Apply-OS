@@ -6,20 +6,19 @@ import wishai.applyos.entity.ui.OSGui;
 
 public abstract class OSView {
 
-    protected static final ResourceLocation COMPONENTS_TEXTURE = new ResourceLocation(ApplyOSMod.MOD_ID, "textures/guis/components.png");
+    protected static final ResourceLocation COMPONENTS_TEXTURE = new ResourceLocation(ApplyOSMod.MOD_ID, "textures/guis/os_components.png");
+    protected static final int SLOT_SIZE = 16;
+    protected static final int GAP_SIZE = 2;
 
 
     public void render(OSGui gui, int x, int y) {
         OSGui.GuiCanvas canvas = gui.getCanvas();
 
-        if (canvas != null)
+        if (canvas != null) {
             gui.getCanvas().translate(x, y);
-
-        if (canvas != null)
             render(gui);
-
-        if (canvas != null)
             gui.getCanvas().translate(-x, -y);
+        }
     }
 
     protected abstract void render(OSGui gui);

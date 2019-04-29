@@ -2,7 +2,6 @@ package wishai.applyos.proxy;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.Mod;
@@ -23,10 +22,7 @@ public class ClientProxy extends CommonProxy {
     public void preInit(FMLPreInitializationEvent e) {
         super.preInit(e);
 
-        for (Item item : items) {
-//            if (item instanceof ItemBlock)
-                renderers.add(item);
-        }
+        renderers.addAll(items);
     }
 
     private static void registerRender(Item item) {
@@ -35,9 +31,6 @@ public class ClientProxy extends CommonProxy {
 
     @SubscribeEvent
     public static void registerRendersEvent(ModelRegistryEvent evt) {
-//        registerRender(OSItemFactory.getItem(LauncherBlock.class));
-//        registerRender(OSItemFactory.getItem(FileBlock.class));
-
         for (Item renderer : renderers) {
             registerRender(renderer);
         }

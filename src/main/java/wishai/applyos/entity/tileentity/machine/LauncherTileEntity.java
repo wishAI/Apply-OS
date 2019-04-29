@@ -9,7 +9,7 @@ public class LauncherTileEntity extends OSMachineTileEntity {
 
     @Override
     public ItemProviderHandler createItemProvider() {
-        return new ItemProviderHandler(9);
+        return new ItemProviderHandler();
     }
 
 }
