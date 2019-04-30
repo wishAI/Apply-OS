@@ -7,10 +7,7 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import wishai.applyos.entity.tileentity.OSTileEntity;
 import wishai.applyos.entity.ui.OSGui;
-import wishai.applyos.entity.ui.component.ButtonView;
-import wishai.applyos.entity.ui.component.ItemView;
-import wishai.applyos.entity.ui.component.LabelView;
-import wishai.applyos.entity.ui.component.SlotView;
+import wishai.applyos.entity.ui.component.*;
 
 public class LauncherGui extends OSGui {
 
@@ -19,8 +16,8 @@ public class LauncherGui extends OSGui {
     }
 
     @Override
-    protected void addTileEntityViews() {
-        super.addTileEntityViews();
+    protected void onInitialized() {
+        super.onInitialized();
 
         IItemHandler itemProvider = tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.NORTH);
 
@@ -29,6 +26,8 @@ public class LauncherGui extends OSGui {
         add(new ButtonView("V", 50), 0, 0);
         add(new ItemView(Items.APPLE), 60, 0);
         add(new LabelView("label", 50), 0, 50);
+        for (int i = 0; i < 6; i ++)
+            add(new ItemOptionView(Items.APPLE, "Apple"), 35 + ItemOptionView.OPTION_WIDTH * (i % 3), 18 + ItemOptionView.OPTION_HEIGHT * (i / 3));
     }
 
 }

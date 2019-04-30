@@ -13,6 +13,7 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.util.ResourceLocation;
 import wishai.applyos.ApplyOSMod;
 import wishai.applyos.entity.tileentity.OSTileEntity;
+import wishai.applyos.entity.ui.component.OSMultiView;
 import wishai.applyos.entity.ui.component.OSView;
 import wishai.applyos.entity.ui.component.PlayerInventoryView;
 
@@ -27,25 +28,31 @@ public abstract class OSGui extends Container {
     protected OSTileEntity tileEntity;
     private GuiCanvas canvas;
     private InventoryPlayer playerInv;
+    private OSMultiView rootView;
 
 
     public OSGui(InventoryPlayer playerInv, final OSTileEntity tileEntity) {
         this.tileEntity = tileEntity;
         this.playerInv = playerInv;
+        this.rootView = new OSMultiView();
 
         // only initialize canvas on client
-        addTileEntityViews();
         if (tileEntity.getWorld().isRemote)
             this.canvas = new GuiCanvas(this);
+        onInitialized();
     }
 
-    protected void addTileEntityViews() {
+    protected void onInitialized() {
         // add inventory of player
         add(new PlayerInventoryView(playerInv), 2, 128);
     }
 
+    private void update() {
+        rootView.render(this, 0, 0);
+    }
+
     public void add(OSView view, int x, int y) {
-        view.render(this, x, y);
+        this.rootView.add(view, x, y);
     }
 
     public GuiCanvas getCanvas() {
@@ -126,7 +133,7 @@ public abstract class OSGui extends Container {
 
             // render all the views for the client
             translate(guiLeft, guiTop);
-            addTileEntityViews();
+            update();
             translate(-guiLeft, -guiTop);
         }
     }

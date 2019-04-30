@@ -9,13 +9,20 @@ public class LabelView extends OSView {
 
     private String text;
     private int width;
-    private boolean isRendered;
+    private GuiLabel label;
+    private List<GuiLabel> labelList;
 
 
     public LabelView(String text, int width) {
         this.text = text;
         this.width = width;
-        this.isRendered = false;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+        if (labelList != null)
+            labelList.remove(label);
+        this.label = null;
     }
 
     @Override
@@ -24,12 +31,12 @@ public class LabelView extends OSView {
 
         OSGui.GuiCanvas canvas = gui.getCanvas();
 
-        if (canvas != null && !isRendered) {
-            List<GuiLabel> labels = canvas.getLabelList();
-            GuiLabel label = new GuiLabel(canvas.getFontRenderer(), labels.size() + 1, x + canvas.getGuiLeft(), y + canvas.getGuiTop(), width, SLOT_SIZE, 0xFFFFFF);
+        if (canvas != null && label == null) {
+            this.labelList = canvas.getLabelList();
+            this.label = new GuiLabel(canvas.getFontRenderer(), labelList.size() + 1, x + canvas.getGuiLeft(), y + canvas.getGuiTop(), width, UNIT_SIZE, 0xFFFFFF);
+            label.setCentered();
             label.addLine(text);
-            labels.add(label);
-            isRendered = true;
+            labelList.add(label);
         }
     }
 

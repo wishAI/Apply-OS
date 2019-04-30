@@ -2,12 +2,17 @@ package wishai.applyos.entity.ui.component;
 
 import wishai.applyos.entity.ui.OSGui;
 
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract class OSMultiView extends OSView {
+public class OSMultiView extends OSView {
 
-    private Collection<SubView> subViews;
+    private List<SubView> subViews;
 
+
+    public OSMultiView() {
+        this.subViews = new ArrayList<>();
+    }
 
     public void add(OSView view, int x, int y) {
         this.subViews.add(new SubView(view, x, y));

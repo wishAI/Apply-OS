@@ -7,19 +7,26 @@ import net.minecraft.client.renderer.GlStateManager;
 import wishai.applyos.entity.ui.OSGui;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class ButtonView extends OSView {
 
     private String text;
     private int width;
-    private List<OnClickListener> listeners;
+    private int height;
+    private Collection<OnClickListener> listeners;
     private boolean isRendered;
 
 
     public ButtonView(String text, int width) {
+        this(text, width, UNIT_SIZE);
+    }
+
+    public ButtonView(String text, int width, int height) {
         this.text = text;
         this.width = width;
+        this.height = height;
         this.isRendered = false;
         listeners = new ArrayList<>();
     }
@@ -36,7 +43,7 @@ public class ButtonView extends OSView {
 
         if (canvas != null && !isRendered) {
             List<GuiButton> buttons = canvas.getButtonList();
-            GuiButton button = new OSGuiButton(buttons.size(), x + canvas.getGuiLeft(), y + canvas.getGuiTop(), width, SLOT_SIZE, text);
+            GuiButton button = new OSGuiButton(buttons.size(), x + canvas.getGuiLeft(), y + canvas.getGuiTop(), width, height, text);
             buttons.add(button);
             this.isRendered = true;
         }
@@ -56,6 +63,7 @@ public class ButtonView extends OSView {
         public void mouseReleased(int mouseX, int mouseY) {
             super.mouseReleased(mouseX, mouseY);
 
+            System.out.println("zhazha");
             for (OnClickListener listener : listeners)
                 listener.onClick(null);
         }
@@ -74,7 +82,7 @@ public class ButtonView extends OSView {
                 GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
                 GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
                 if (i > 0)
-                    this.drawTexturedModalRect(this.x, this.y, 0, (i - 1) * SLOT_SIZE, this.width, this.height);
+                    this.drawTexturedModalRect(this.x, this.y, 0, (i - 1) * UNIT_SIZE, this.width, this.height);
                 this.mouseDragged(mc, mouseX, mouseY);
                 int j = 14737632;
 
