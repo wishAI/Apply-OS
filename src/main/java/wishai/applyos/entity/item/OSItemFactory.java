@@ -8,7 +8,9 @@ import wishai.applyos.entity.block.OSBlockFactory;
 import wishai.applyos.entity.tileentity.machine.OSMachineTileEntity;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -80,6 +82,18 @@ public class OSItemFactory {
 
         items.put(className, item);
         return item;
+    }
+
+    public static List<MachineAppItem> getAllMachineAppItems() {
+        List<MachineAppItem> apps = new ArrayList<>();
+
+        for (Map.Entry<String, Item> entry : items.entrySet()) {
+            Item item = entry.getValue();
+            if (item instanceof MachineAppItem)
+                apps.add((MachineAppItem) item);
+        }
+
+        return apps;
     }
 
     private static String getRegistryName(Block block) {

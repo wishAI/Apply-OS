@@ -14,8 +14,8 @@ import net.minecraft.util.ResourceLocation;
 import wishai.applyos.ApplyOSMod;
 import wishai.applyos.entity.tileentity.OSTileEntity;
 import wishai.applyos.entity.ui.component.OSMultiView;
-import wishai.applyos.entity.ui.component.OSView;
-import wishai.applyos.entity.ui.component.PlayerInventoryView;
+import wishai.applyos.entity.ui.component.basic.OSView;
+import wishai.applyos.entity.ui.component.basic.PlayerInventoryView;
 
 import java.util.List;
 
@@ -24,6 +24,12 @@ public abstract class OSGui extends Container {
 
     private static final ResourceLocation BG_TEXTURE = new ResourceLocation(ApplyOSMod.MOD_ID, "textures/guis/os_background.png");
     private static final ResourceLocation BG_TEXTURE_CLEAN = new ResourceLocation(ApplyOSMod.MOD_ID, "textures/guis/os_background_clean.png");
+    public static final String UP_ARROW = "\u2191";
+    public static final String DOWN_ARROW = "\u2193";
+    public static final String RIGHT_ARROW = ">";
+    protected static final int MARGIN = 8;
+    protected static final int GUI_WIDTH = 176;
+    protected static final int GUI_HEIGHT = 70;
 
     protected OSTileEntity tileEntity;
     private GuiCanvas canvas;
@@ -39,10 +45,7 @@ public abstract class OSGui extends Container {
         // only initialize canvas on client
         if (tileEntity.getWorld().isRemote)
             this.canvas = new GuiCanvas(this);
-        onInitialized();
-    }
 
-    protected void onInitialized() {
         // add inventory of player
         add(new PlayerInventoryView(playerInv), 2, 128);
     }
@@ -53,6 +56,10 @@ public abstract class OSGui extends Container {
 
     public void add(OSView view, int x, int y) {
         this.rootView.add(view, x, y);
+    }
+
+    public void remove(OSView view) {
+        this.rootView.remove(view);
     }
 
     public GuiCanvas getCanvas() {

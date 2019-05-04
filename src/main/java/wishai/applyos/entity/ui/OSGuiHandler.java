@@ -6,7 +6,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 import wishai.applyos.entity.tileentity.OSTileEntity;
-import wishai.applyos.entity.ui.machine.FileManagerGui;
+import wishai.applyos.entity.ui.machine.FilesGui;
 import wishai.applyos.entity.ui.machine.LauncherGui;
 
 import javax.annotation.Nullable;
@@ -39,7 +39,7 @@ public class OSGuiHandler implements IGuiHandler {
             case LAUNCHER:
                 return new LauncherGui(playerInv, tileEntity);
             case FILE_MANAGER:
-                return new FileManagerGui(playerInv, tileEntity);
+                return new FilesGui(playerInv, tileEntity);
         }
 
         throw new RuntimeException("GUI with index not found.");

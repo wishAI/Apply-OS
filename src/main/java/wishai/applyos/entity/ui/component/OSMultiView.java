@@ -1,6 +1,7 @@
 package wishai.applyos.entity.ui.component;
 
 import wishai.applyos.entity.ui.OSGui;
+import wishai.applyos.entity.ui.component.basic.OSView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,15 @@ public class OSMultiView extends OSView {
 
     public void add(OSView view, int x, int y) {
         this.subViews.add(new SubView(view, x, y));
+    }
+
+    public void remove(OSView view) {
+        for (SubView subView : subViews) {
+            if (subView.view == view) {
+                this.subViews.remove(subView);
+                return;
+            }
+        }
     }
 
     private class SubView {

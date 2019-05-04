@@ -5,7 +5,7 @@ Time: 4/19/19 10:52 AM
 Description: Rendering screen
 
 java.lang.RuntimeException: The class is not a food block
-	at wishai.applyos.entity.block.OSBlockFactory.getBlock(OSBlockFactory.java:16)
+	at getRegularBlock(OSBlockFactory.java:16)
 	at wishai.applyos.entity.ui.OSTab.getTabIconItem(OSTab.java:18)
 	at net.minecraft.creativetab.CreativeTabs.getIconItemStack(CreativeTabs.java:193)
 	at net.minecraft.client.gui.inventory.GuiContainerCreative.drawTab(GuiContainerCreative.java:978)
@@ -38,7 +38,7 @@ A detailed walkthrough of the error, its code path and all known details is as f
 -- Head --
 Thread: Client thread
 Stacktrace:
-	at wishai.applyos.entity.block.OSBlockFactory.getBlock(OSBlockFactory.java:16)
+	at getRegularBlock(OSBlockFactory.java:16)
 	at wishai.applyos.entity.ui.OSTab.getTabIconItem(OSTab.java:18)
 	at net.minecraft.creativetab.CreativeTabs.getIconItemStack(CreativeTabs.java:193)
 	at net.minecraft.client.gui.inventory.GuiContainerCreative.drawTab(GuiContainerCreative.java:978)
