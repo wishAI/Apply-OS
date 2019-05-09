@@ -1,8 +1,8 @@
-package wishai.applyos.entity.ui.component.basic;
+package wishai.applyos.ui.component.basic;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import wishai.applyos.entity.ui.OSGui;
+import wishai.applyos.ui.OSGui;
 
 
 public class ItemView extends OSView {

@@ -1,4 +1,4 @@
-package wishai.applyos.entity.ui;
+package wishai.applyos.ui;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;

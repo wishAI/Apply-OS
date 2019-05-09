@@ -1,4 +1,4 @@
-package wishai.applyos.entity.ui.component.option;
+package wishai.applyos.ui.component.option;
 
 import java.util.ArrayList;
 import java.util.List;

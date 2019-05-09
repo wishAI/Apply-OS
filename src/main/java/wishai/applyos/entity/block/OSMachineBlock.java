@@ -17,7 +17,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
-import wishai.applyos.entity.ui.OSInteractionObject;
+import wishai.applyos.ui.OSInteractionObject;
 
 
 public abstract class OSMachineBlock extends OSBlock {

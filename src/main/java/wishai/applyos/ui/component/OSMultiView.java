@@ -1,7 +1,7 @@
-package wishai.applyos.entity.ui.component;
+package wishai.applyos.ui.component;
 
-import wishai.applyos.entity.ui.OSGui;
-import wishai.applyos.entity.ui.component.basic.OSView;
+import wishai.applyos.ui.OSGui;
+import wishai.applyos.ui.component.basic.OSView;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,12 +1,12 @@
-package wishai.applyos.entity.ui.component.basic;
+package wishai.applyos.ui.component.basic;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
-import wishai.applyos.entity.ui.OSGui;
-import wishai.applyos.entity.ui.component.GuiEvent;
-import wishai.applyos.entity.ui.component.ClickListener;
+import wishai.applyos.ui.OSGui;
+import wishai.applyos.ui.component.GuiEvent;
+import wishai.applyos.ui.component.ClickListener;
 
 import java.util.ArrayList;
 import java.util.Collection;

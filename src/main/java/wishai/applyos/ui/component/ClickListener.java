@@ -1,4 +1,4 @@
-package wishai.applyos.entity.ui.component;
+package wishai.applyos.ui.component;
 
 public interface ClickListener {
 

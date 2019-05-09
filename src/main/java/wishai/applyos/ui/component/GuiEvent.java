@@ -1,6 +1,6 @@
-package wishai.applyos.entity.ui.component;
+package wishai.applyos.ui.component;
 
-import wishai.applyos.entity.ui.component.basic.OSView;
+import wishai.applyos.ui.component.basic.OSView;
 
 public class GuiEvent {
 

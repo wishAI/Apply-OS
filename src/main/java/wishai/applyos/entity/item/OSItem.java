@@ -1,8 +1,7 @@
 package wishai.applyos.entity.item;
 
 import net.minecraft.item.Item;
-import wishai.applyos.ApplyOSMod;
-import wishai.applyos.entity.ui.OSItemGroup;
+import wishai.applyos.ui.OSItemGroup;
 
 
 public class OSItem extends Item {

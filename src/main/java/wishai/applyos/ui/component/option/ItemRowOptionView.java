@@ -1,9 +1,9 @@
-package wishai.applyos.entity.ui.component.option;
+package wishai.applyos.ui.component.option;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import wishai.applyos.entity.ui.component.basic.ItemView;
-import wishai.applyos.entity.ui.component.basic.LabelView;
+import wishai.applyos.ui.component.basic.ItemView;
+import wishai.applyos.ui.component.basic.LabelView;
 
 
 public class ItemRowOptionView extends OptionView {

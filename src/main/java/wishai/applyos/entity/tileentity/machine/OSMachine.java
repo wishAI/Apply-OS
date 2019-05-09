@@ -2,7 +2,7 @@ package wishai.applyos.entity.tileentity.machine;
 
 import wishai.applyos.entity.block.OSMachineBlock;
 import wishai.applyos.entity.block.SampleMachineBlock;
-import wishai.applyos.entity.ui.OSGui;
+import wishai.applyos.ui.OSGui;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

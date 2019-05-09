@@ -1,10 +1,10 @@
-package wishai.applyos.entity.ui.component.option;
+package wishai.applyos.ui.component.option;
 
-import wishai.applyos.entity.ui.OSGui;
-import wishai.applyos.entity.ui.component.basic.ButtonView;
-import wishai.applyos.entity.ui.component.GuiEvent;
-import wishai.applyos.entity.ui.component.OSMultiView;
-import wishai.applyos.entity.ui.component.ClickListener;
+import wishai.applyos.ui.OSGui;
+import wishai.applyos.ui.component.basic.ButtonView;
+import wishai.applyos.ui.component.GuiEvent;
+import wishai.applyos.ui.component.OSMultiView;
+import wishai.applyos.ui.component.ClickListener;
 
 
 public abstract class OptionView extends OSMultiView implements ClickListener {

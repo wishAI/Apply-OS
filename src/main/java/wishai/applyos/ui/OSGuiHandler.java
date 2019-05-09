@@ -1,4 +1,4 @@
-package wishai.applyos.entity.ui;
+package wishai.applyos.ui;
 
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraftforge.fml.network.FMLPlayMessages;

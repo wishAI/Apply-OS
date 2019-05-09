@@ -1,8 +1,8 @@
-package wishai.applyos.entity.ui.component.basic;
+package wishai.applyos.ui.component.basic;
 
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
-import wishai.applyos.entity.ui.OSGui;
+import wishai.applyos.ui.OSGui;
 
 public class SlotView extends OSView {
 

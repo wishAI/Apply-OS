@@ -3,7 +3,7 @@ package wishai.applyos.entity.tileentity.machine;
 import net.minecraftforge.common.util.LazyOptional;
 import wishai.applyos.entity.tileentity.ItemProviderHandler;
 import wishai.applyos.entity.tileentity.OSTileEntityTypeFactory;
-import wishai.applyos.entity.ui.machine.LauncherGui;
+import wishai.applyos.ui.machine.LauncherGui;
 
 
 @OSMachine(gui = LauncherGui.class)

@@ -1,8 +1,8 @@
-package wishai.applyos.entity.ui.component.basic;
+package wishai.applyos.ui.component.basic;
 
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Slot;
-import wishai.applyos.entity.ui.OSGui;
+import wishai.applyos.ui.OSGui;
 
 public class PlayerInventoryView extends OSView {
 

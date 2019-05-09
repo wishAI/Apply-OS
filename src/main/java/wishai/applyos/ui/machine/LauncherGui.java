@@ -1,4 +1,4 @@
-package wishai.applyos.entity.ui.machine;
+package wishai.applyos.ui.machine;
 
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.Item;
@@ -8,14 +8,14 @@ import net.minecraftforge.items.IItemHandler;
 import wishai.applyos.entity.item.MachineAppItem;
 import wishai.applyos.entity.item.OSItemFactory;
 import wishai.applyos.entity.tileentity.OSTileEntity;
-import wishai.applyos.entity.ui.OSGui;
-import wishai.applyos.entity.ui.component.*;
-import wishai.applyos.entity.ui.component.basic.ButtonView;
-import wishai.applyos.entity.ui.component.basic.OSView;
-import wishai.applyos.entity.ui.component.basic.SlotView;
-import wishai.applyos.entity.ui.component.option.ItemOptionView;
-import wishai.applyos.entity.ui.component.option.OptionSet;
-import wishai.applyos.entity.ui.component.option.OptionView;
+import wishai.applyos.ui.OSGui;
+import wishai.applyos.ui.component.*;
+import wishai.applyos.ui.component.basic.ButtonView;
+import wishai.applyos.ui.component.basic.OSView;
+import wishai.applyos.ui.component.basic.SlotView;
+import wishai.applyos.ui.component.option.ItemOptionView;
+import wishai.applyos.ui.component.option.OptionSet;
+import wishai.applyos.ui.component.option.OptionView;
 import wishai.applyos.util.Translator;
 
 import java.util.List;

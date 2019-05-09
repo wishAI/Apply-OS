@@ -1,4 +1,4 @@
-package wishai.applyos.entity.ui;
+package wishai.applyos.ui;
 
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
@@ -6,7 +6,6 @@ import net.minecraft.client.gui.GuiLabel;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.ItemRenderer;
-import net.minecraft.client.renderer.RenderItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -14,10 +13,11 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.util.ResourceLocation;
 import wishai.applyos.ApplyOSMod;
 import wishai.applyos.entity.tileentity.OSTileEntity;
-import wishai.applyos.entity.ui.component.OSMultiView;
-import wishai.applyos.entity.ui.component.basic.OSView;
-import wishai.applyos.entity.ui.component.basic.PlayerInventoryView;
+import wishai.applyos.ui.component.OSMultiView;
+import wishai.applyos.ui.component.basic.OSView;
+import wishai.applyos.ui.component.basic.PlayerInventoryView;
 
+import javax.annotation.Nonnull;
 import java.util.List;
 
 
@@ -51,7 +51,7 @@ public abstract class OSGui extends Container {
         add(new PlayerInventoryView(playerInv), 2, 128);
     }
 
-    private void update() {
+    protected void update() {
         rootView.render(this, 0, 0);
     }
 
@@ -71,9 +71,10 @@ public abstract class OSGui extends Container {
         return tileEntity;
     }
 
+    @Nonnull
     @Override
-    public Slot addSlotToContainer(Slot slotIn) {
-        return super.addSlotToContainer(slotIn);
+    public Slot addSlot(Slot slotIn) {
+        return super.addSlot(slotIn);
     }
 
     @Override
@@ -84,17 +85,21 @@ public abstract class OSGui extends Container {
 
     public static class GuiCanvas extends GuiContainer {
 
+        private Container container;
+
+
         public GuiCanvas(Container inventorySlotsIn) {
             super(inventorySlotsIn);
+            this.container = inventorySlotsIn;
         }
 
         public void translate(float x, float y) {
-            GlStateManager.translate(x, y, 0.0F);
+            GlStateManager.translatef(x, y, 0.0F);
         }
 
 
         public void setTexture(ResourceLocation texture) {
-            GlStateManager.color(1, 1, 1, 1);
+            GlStateManager.color4f(1, 1, 1, 1);
             this.mc.getTextureManager().bindTexture(texture);
         }
 
@@ -143,7 +148,7 @@ public abstract class OSGui extends Container {
 
             // render all the views for the client
             translate(guiLeft, guiTop);
-            update();
+            ((OSGui) container).update();
             translate(-guiLeft, -guiTop);
         }
     }

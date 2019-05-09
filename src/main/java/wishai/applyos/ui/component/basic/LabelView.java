@@ -1,7 +1,7 @@
-package wishai.applyos.entity.ui.component.basic;
+package wishai.applyos.ui.component.basic;
 
 import net.minecraft.client.gui.GuiLabel;
-import wishai.applyos.entity.ui.OSGui;
+import wishai.applyos.ui.OSGui;
 
 import java.util.List;
 
