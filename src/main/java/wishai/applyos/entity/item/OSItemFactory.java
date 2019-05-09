@@ -5,6 +5,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import wishai.applyos.entity.block.OSBlock;
 import wishai.applyos.entity.block.OSBlockFactory;
+import wishai.applyos.entity.block.RegularBlock;
 import wishai.applyos.entity.tileentity.machine.OSMachineTileEntity;
 
 import java.lang.reflect.InvocationTargetException;
@@ -19,7 +20,19 @@ public class OSItemFactory {
     private static final Map<String, Item> items = new HashMap<>();
 
 
-    public static Item getItem(Class<?> itemClass) {
+    public static Item getRegularItem(String name) {
+        // return if this block has been already created
+        String className = RegularItem.class.getName() + "." + name;
+        if (items.containsKey(className))
+            return items.get(className);
+
+        RegularItem item = new RegularItem(name);
+
+        items.put(className, item);
+        return item;
+    }
+
+    public static Item getRegularItem(Class<?> itemClass) {
         if (!OSItem.class.isAssignableFrom(itemClass))
             throw new RuntimeException("This is not an os item. ");
 
@@ -38,7 +51,7 @@ public class OSItemFactory {
         return item;
     }
 
-    public static Item getRegularBlockItem(OSBlock block) {
+    public static Item getRegularBlockItem(Block block) {
         Class blockClass = block.getClass();
 
         String className = blockClass.getName() + "." + getRegistryName(block);

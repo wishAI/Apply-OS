@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "normal": { "model": "applyos:ore_silicon" }
+  }
+}

@@ -1,6 +1,13 @@
-# machines
-tile.applyos.machine_base.name=OS Base Block
-item.applyos.launcher_app.name=Launcher
-item.applyos.file_app.name=Files
-tile.applyos.machine.launcher.name=Launcher Device
-tile.applyos.machine.file.name=File Manager Device
+{
+    "block.applyos.ore_silicon": "Silicon Ore",
+    "item.applyos.dust_silicon": "Silicon Dust"
+
+
+    "block.applyos.machine_base": "OS Base Block",
+
+    "item.applyos.launcher_app": "Launcher",
+    "item.applyos.file_app": "Files",
+
+    "block.applyos.launcher": "Launcher - Blockcomputer",
+    "block.applyos.file": "Files - Blockcomputer"
+}

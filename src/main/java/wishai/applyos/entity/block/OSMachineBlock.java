@@ -1,67 +1,64 @@
 package wishai.applyos.entity.block;
 
 
-import net.minecraft.block.ITileEntityProvider;
-import net.minecraft.block.material.MapColor;
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.state.BlockStateContainer;
+import net.minecraft.block.material.MaterialColor;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
+import net.minecraft.state.StateContainer;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import wishai.applyos.ApplyOSMod;
+import net.minecraftforge.fml.network.NetworkHooks;
+import wishai.applyos.entity.ui.OSInteractionObject;
 
 
-public abstract class OSMachineBlock extends OSBlock implements ITileEntityProvider {
+public abstract class OSMachineBlock extends OSBlock {
 
     public OSMachineBlock(String name) {
-        super(Material.IRON, MapColor.CYAN, "machine." + name);
+        super(name, Block.Properties.create(Material.IRON, MaterialColor.BLACK));
     }
 
     @Override
-    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        if (worldIn.isRemote)
-            return true;
-
-        playerIn.openGui(ApplyOSMod.instance, createGui(), worldIn, pos.getX(), pos.getY(), pos.getZ());
-
+    public boolean hasTileEntity(IBlockState state) {
         return true;
     }
 
-    protected abstract int createGui();
+    @Override
+    public boolean onBlockActivated(IBlockState state, World worldIn, BlockPos pos, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
+        if (worldIn.isRemote())
+            return true;
+
+        // get gui of tileentity
+        TileEntity entity = worldIn.getTileEntity(pos);
+
+        NetworkHooks.openGui((EntityPlayerMP) player, new OSInteractionObject(entity), buf -> buf.writeBlockPos(pos));
+
+        return true;
+    }
 
     // !!! all the stuff that deals with facing of a block, should be seperated from this
 
     @Override
     public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
-        world.setBlockState(pos, state.withProperty(FACING_H, placer.getHorizontalFacing().getOpposite()), 2);
+        world.setBlockState(pos, state.with(FACING_H, placer.getHorizontalFacing().getOpposite()), 2);
     }
 
     @Override
-    public IBlockState getStateFromMeta(int meta) {
-        // Since we only allow horizontal rotation we need only 2 bits for facing. North, South, West, East start at index 2 so we have to add 2 here.
-        return getDefaultState().withProperty(FACING_H, EnumFacing.getFront((meta & 3) + 2));
-    }
-
-    @Override
-    public int getMetaFromState(IBlockState state) {
-        // Since we only allow horizontal rotation we need only 2 bits for facing. North, South, West, East start at index 2 so we have to subtract 2 here.
-        return state.getValue(FACING_H).getIndex()-2;
-    }
-
-    @Override
-    protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, FACING_H);
-    }
-
-    @Override
-    public BlockRenderLayer getBlockLayer() {
+    public BlockRenderLayer getRenderLayer() {
         return BlockRenderLayer.CUTOUT;
+    }
+
+    @Override
+    protected void fillStateContainer(StateContainer.Builder<Block, IBlockState> builder) {
+        builder.add(FACING_H);
     }
 
 }

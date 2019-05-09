@@ -1,29 +1,18 @@
 package wishai.applyos.entity.block;
 
-import net.minecraft.block.properties.PropertyDirection;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.state.DirectionProperty;
 import net.minecraft.util.EnumFacing;
-import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
-import net.minecraft.block.material.MapColor;
-import net.minecraft.block.material.Material;
-import wishai.applyos.ApplyOSMod;
-import wishai.applyos.entity.ui.OSTab;
+
 
 public abstract class OSBlock extends Block {
 
-    public static final PropertyDirection FACING_H = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
+    public static final DirectionProperty FACING_H = DirectionProperty.create("facing", EnumFacing.Plane.HORIZONTAL);
 
 
-    public OSBlock(Material blockMaterialIn, MapColor blockMapColorIn, String name) {
-        super(blockMaterialIn, blockMapColorIn);
-        setUnlocalizedName(ApplyOSMod.MOD_ID + "." + name);
-        if (name.lastIndexOf(".") >= 0)
-            name = name.substring(name.lastIndexOf(".") + 1);
+    public OSBlock(String name, Block.Properties properties) {
+        super(properties);
         setRegistryName(name);
-        setCreativeTab(OSTab.getInstance());
     }
 
 //    public OSBlock(MapColor blockMapColorIn, String name) {

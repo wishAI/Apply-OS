@@ -5,6 +5,7 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiLabel;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.ItemRenderer;
 import net.minecraft.client.renderer.RenderItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -80,7 +81,8 @@ public abstract class OSGui extends Container {
         return true;
     }
 
-    public class GuiCanvas extends GuiContainer {
+
+    public static class GuiCanvas extends GuiContainer {
 
         public GuiCanvas(Container inventorySlotsIn) {
             super(inventorySlotsIn);
@@ -89,6 +91,7 @@ public abstract class OSGui extends Container {
         public void translate(float x, float y) {
             GlStateManager.translate(x, y, 0.0F);
         }
+
 
         public void setTexture(ResourceLocation texture) {
             GlStateManager.color(1, 1, 1, 1);
@@ -104,11 +107,11 @@ public abstract class OSGui extends Container {
         }
 
         public List<GuiButton> getButtonList() {
-            return buttonList;
+            return buttons;
         }
 
         public List<GuiLabel> getLabelList() {
-            return labelList;
+            return labels;
         }
 
         public FontRenderer getFontRenderer() {
@@ -119,7 +122,7 @@ public abstract class OSGui extends Container {
             super.drawTexturedModalRect(x, y, textureX, textureY, xSize, ySize);
         }
 
-        public RenderItem getItemRender() {
+        public ItemRenderer getItemRender() {
             return itemRender;
         }
 
